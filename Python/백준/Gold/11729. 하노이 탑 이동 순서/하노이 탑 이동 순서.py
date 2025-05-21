@@ -3,27 +3,18 @@ import sys
 N = int(sys.stdin.readline())
 
 
-def hanoi(n, start, target, sub, move, path):
+def hanoi(n, start, target, sub):
     if n == 1:
-        path.append((start, target))
-        return move + 1, path
+        print(start, target)
+        return
 
-    move, path = hanoi(n-1, start, sub, target, move, path)
+    hanoi(n-1, start, sub, target)
 
-    path.append((start, target))
-    move += 1
+    print(start, target)
 
-    move, path = hanoi(n-1, sub, target, start, move, path)
-
-    return move, path
+    hanoi(n-1, sub, target, start)
 
 
-move = 0
-path = []
+print(2**N - 1)
 
-move, path = hanoi(N, 1, 3, 2, move, path)
-
-print(move)
-
-for s, t in path:
-    print(s, t)
+hanoi(N, 1, 3, 2)
