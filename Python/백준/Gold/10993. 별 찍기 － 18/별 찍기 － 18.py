@@ -9,8 +9,8 @@ def stars(n):
 
     new_stars = []
 
-    row = (2**n - 1) * 2 - 1
     col = 2**n - 1
+    row = col * 2 - 1
 
     if n % 2 == 0:
         new_stars.append('*' * row)
