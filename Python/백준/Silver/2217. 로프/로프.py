@@ -1,5 +1,4 @@
 import sys
-from collections import deque
 
 N = int(sys.stdin.readline())
 
@@ -8,13 +7,13 @@ ropes = []
 for _ in range(N):
     ropes.append(int(sys.stdin.readline()))
 
-ropes = deque(sorted(ropes))
+ropes.sort()
 
-result = []
+result = 0
 
-while ropes:
-    rope = ropes.popleft()
+for i in range(N):
+    cur_weight = ropes[i] * (N-i)
 
-    result.append(rope * (len(ropes) + 1))
+    result = max(result, cur_weight)
 
-print(max(result))
+print(result)
