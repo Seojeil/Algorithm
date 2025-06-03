@@ -2,8 +2,6 @@ import sys
 
 input = sys.stdin.readline
 
-angles = set()
-
 while True:
     line = input()
 
