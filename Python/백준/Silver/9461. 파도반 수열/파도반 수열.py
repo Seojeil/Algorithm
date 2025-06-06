@@ -9,9 +9,7 @@ for _ in range(T):
 
     dp = [1] * (N+1)
 
-    if N <= 3:
-        print(1)
-    else:
+    if N > 3:
         for i in range(4, N+1):
             dp[i] = dp[i-2] + dp[i-3]
-        print(dp[N])
+    print(dp[N])
