@@ -4,14 +4,11 @@ input = sys.stdin.readline
 N, M = map(int, input().split())
 temperature = list(map(int, input().split()))
 
-prefix_sum = [0] * (N + 1)
+prefix_sum = [0] * (N-M+1)
 
-for k in range(N):
-    prefix_sum[k+1] = prefix_sum[k] + temperature[k]
+prefix_sum[0] = sum(temperature[:M])
 
-result = []
+for i in range(N-M):
+    prefix_sum[i+1] = prefix_sum[i] + temperature[M+i] - temperature[i]
 
-for i in range(N-M+1):
-    result.append(prefix_sum[i+M] - prefix_sum[i])
-
-print(max(result))
+print(max(prefix_sum))
